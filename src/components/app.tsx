@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Profile from "./profile";
 import useDebounce from "../hooks/useDebounce";
 import type { User } from "../types/users";
+import SearchBar from "./searchbar";
 
 const App = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -47,17 +48,13 @@ const App = () => {
   };
   return (
     <div className="flex flex-col items-center">
-      <div className="p-10">
-        <input
-          type="text"
-          className="border border-black p-2"
-          onChange={(e) => {
-            setSkip(0);
+      <SearchBar
+        onChange={(e) => {
+          setSkip(0);
 
-            setSearch(e.target.value);
-          }}
-        />
-      </div>
+          setSearch(e.target.value);
+        }}
+      />
       {loading && <div>loading</div>}
       {error && <div>Error</div>}
       {!loading && !error && (

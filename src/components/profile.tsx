@@ -15,14 +15,20 @@ const Profile = ({
 }: ProfileProps) => {
   return (
     <div>
-      <div className="bg-amber-100 border border-black p-5 ">
-        <div className="flex flex-row items-center">
-          <img src={imgSrc || "/vite.svg"} alt="" className="w-12 h-12" />
-          <h1>{fullName}</h1>
+      <div className="bg-amber-50 border border-black/30 rounded-lg p-5 ">
+        <div className="flex flex-col ">
+          <img src={imgSrc || "/vite.svg"} alt="" className="w-14 h-14" />
+          <p className="font-bold text-lg ">{fullName}</p>
         </div>
-        <p>{email}</p>
-        <p>{phone}</p>
+        <p>E-mail:{email}</p>
+        <p>
+          <span className="">Phone:</span>
+          {phone}
+        </p>
         <p>{companyName}</p>
+        <button className="bg-blue-500 text-white rounded-lg p-2 mt-2">
+          View Profile
+        </button>
       </div>
     </div>
   );

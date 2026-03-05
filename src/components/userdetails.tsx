@@ -19,6 +19,13 @@ const UserDetails = () => {
     fetchData();
   }, [id]);
 
+  const deleteUser = async () => {
+    const response = await axios.delete(`https://dummyjson.com/users/${id}`);
+    if (response.status == 200) {
+      alert("User Deleted");
+      navigate("/");
+    }
+  };
   const fullName = `${userDetails?.firstName} ${userDetails?.lastName}`;
   const companyAddress = `${userDetails?.company.address.address} , ${userDetails?.company.address.city} , ${userDetails?.company.address.country} `;
   return (
@@ -31,6 +38,9 @@ const UserDetails = () => {
       <div className="w-screen flex items-center">
         <div>
           <button onClick={() => navigate(`/`)}>Back to Listing</button>
+        </div>
+        <div>
+          <button onClick={deleteUser}>Delete User</button>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-6">

@@ -4,7 +4,7 @@ interface SearchBarProps {
 
 const SearchBar = ({ onChange }: SearchBarProps) => {
   return (
-    <div className="p-10">
+    <div className="">
       <input
         type="text"
         className="border border-black p-2"

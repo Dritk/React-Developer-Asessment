@@ -4,6 +4,7 @@ interface ProfileProps {
   email: string;
   phone: string;
   companyName: string;
+  onClick?: () => void;
 }
 
 const Profile = ({
@@ -12,6 +13,7 @@ const Profile = ({
   email,
   phone,
   companyName,
+  onClick,
 }: ProfileProps) => {
   return (
     <div>
@@ -26,7 +28,10 @@ const Profile = ({
           {phone}
         </p>
         <p>{companyName}</p>
-        <button className="bg-blue-500 text-white rounded-lg p-2 mt-2">
+        <button
+          className="bg-blue-500 text-white rounded-lg p-2 mt-2"
+          onClick={onClick}
+        >
           View Profile
         </button>
       </div>

@@ -6,7 +6,7 @@ import type { User } from "../types/users";
 import SearchBar from "./searchbar";
 import Loader from "./loader";
 import Button from "./button";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [users, setUsers] = useState<User[]>([]);

@@ -2,8 +2,10 @@ import { Formik } from "formik";
 import { userDetailsSchema } from "../schema/formvalidation";
 import type { InputFieldProps } from "../types/inputfield";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const UserForm = () => {
+  const navigate = useNavigate();
   return (
     <Formik
       initialValues={{
@@ -30,7 +32,11 @@ const UserForm = () => {
           "https://dummyjson.com/users/add",
           values,
         );
-        console.log(response.data);
+        if (response.status == 201) {
+          alert("User Added");
+          navigate("/");
+        }
+        console.log(response);
       }}
     >
       {(props) => {

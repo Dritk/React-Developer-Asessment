@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./components/home";
 import { Routes, Route } from "react-router-dom";
 import UserDetails from "./components/userdetails";
@@ -10,6 +9,7 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/:id" element={<UserDetails />} />
       <Route path="/add-user" element={<UserForm />} />
+      <Route path="/edit-user/:id" element={<UserForm />} />
     </Routes>
   );
 };

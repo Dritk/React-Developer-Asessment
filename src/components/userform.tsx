@@ -2,48 +2,62 @@ import { Formik } from "formik";
 import { userDetailsSchema } from "../schema/formvalidation";
 import type { InputFieldProps } from "../types/inputfield";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import type { User } from "../types/users";
 
 const UserForm = () => {
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  const [userDetails, setUserDetails] = useState<User>();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await axios.get(`https://dummyjson.com/users/${id}`);
+        setUserDetails(data.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchData();
+  }, [id]);
+  console.log(userDetails);
   return (
     <Formik
+      enableReinitialize
       initialValues={{
-        firstName: "",
-        lastName: "",
-        birthDate: "",
-        gender: "",
-        phone: "",
-        email: "",
-
-        address: "",
-        city: "",
-
-        companyName: "",
-        department: "",
-        title: "",
-
-        cardExpire: "",
-        cardNumber: "",
+        firstName: userDetails?.firstName || "",
+        lastName: userDetails?.lastName || "",
+        birthDate: userDetails?.birthDate || "",
+        gender: userDetails?.gender || "",
+        phone: userDetails?.phone || "",
+        email: userDetails?.email || "",
+        address: userDetails?.address?.address || "",
+        city: userDetails?.address?.city || "",
+        companyName: userDetails?.company?.name || "",
+        department: userDetails?.company?.department || "",
+        title: userDetails?.company?.title || "",
+        cardExpire: userDetails?.bank?.cardExpire || "",
+        cardNumber: userDetails?.bank?.cardNumber || "",
       }}
       validationSchema={userDetailsSchema}
       onSubmit={async (values) => {
-        const response = await axios.post(
-          "https://dummyjson.com/users/add",
-          values,
-        );
-        if (response.status == 201) {
-          alert("User Added");
+        const response = id
+          ? await axios.put(`https://dummyjson.com/users/${id}`, values)
+          : await axios.post("https://dummyjson.com/users/add", values);
+        if (response.status == 201 || response.status == 200) {
+          alert(id ? "Edit Successfully" : "User Added");
           navigate("/");
         }
-        console.log(response);
       }}
     >
       {(props) => {
         console.log(props.errors);
         return (
           <div className="flex flex-col items-center ">
-            <h1 className="text-2xl font-bold my-4">Add New User</h1>
+            <h1 className="text-2xl font-bold my-4">
+              {id ? "Edit User" : "Add New User"}
+            </h1>
             <form
               onSubmit={props.handleSubmit}
               className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-4xl p-4"
@@ -172,7 +186,7 @@ const UserForm = () => {
                 className="bg-blue-500 text-white w-[200px] py-2 px-4 rounded hover:bg-blue-600"
                 type="submit"
               >
-                Submit
+                {id ? "Update" : "Submit"}
               </button>
             </form>
           </div>

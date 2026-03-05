@@ -60,7 +60,9 @@ const Home = () => {
     setSkip(skip - 10);
   };
 
-  const onCheck = (event) => {
+  const onCheck = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setFilter(event.target.value);
     setSkip(0);
   };

@@ -35,12 +35,28 @@ const UserDetails = () => {
         alt="Prof"
         className="w-32 h-32"
       />
-      <div className="w-screen flex items-center">
-        <div>
-          <button onClick={() => navigate(`/`)}>Back to Listing</button>
-        </div>
-        <div>
-          <button onClick={deleteUser}>Delete User</button>
+      <div className="w-full flex items-center justify-between p-4">
+        <button
+          onClick={() => navigate(`/`)}
+          className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg transition"
+        >
+          Back to Listing
+        </button>
+
+        <div className="flex gap-3">
+          <button
+            onClick={() => navigate(`/edit-user/${id}`)}
+            className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded-lg transition"
+          >
+            Edit User
+          </button>
+
+          <button
+            onClick={deleteUser}
+            className="px-4 py-2 bg-red-500 text-white hover:bg-red-600 rounded-lg transition"
+          >
+            Delete User
+          </button>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-6">

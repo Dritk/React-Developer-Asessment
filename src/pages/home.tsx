@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Profile from "./profile";
+
 import useDebounce from "../hooks/useDebounce";
 import type { User } from "../types/users";
-import SearchBar from "./searchbar";
-import Loader from "./loader";
-import Button from "./button";
+
 import { useNavigate } from "react-router-dom";
+import SearchBar from "../components/searchbar";
+import Button from "../components/button";
+import Loader from "../components/loader";
+import Profile from "../components/profile";
 
 const Home = () => {
   const [users, setUsers] = useState<User[]>([]);

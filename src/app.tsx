@@ -1,7 +1,7 @@
-import Home from "./components/home";
 import { Routes, Route } from "react-router-dom";
-import UserDetails from "./components/userdetails";
-import UserForm from "./components/userform";
+import Home from "./pages/home";
+import UserDetails from "./pages/userdetails";
+import UserForm from "./pages/userform";
 
 const App = () => {
   return (

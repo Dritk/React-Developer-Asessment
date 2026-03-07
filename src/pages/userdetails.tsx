@@ -35,22 +35,21 @@ const UserDetails = () => {
         alt="Prof"
         className="w-32 h-32"
       />
-      <div className="w-full flex items-center justify-between p-4">
+      <div className="w-full flex  justify-between  items-center p-4">
         <button
           onClick={() => navigate(`/`)}
-          className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg transition"
+          className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded-lg transition"
         >
           Back to Listing
         </button>
 
-        <div className="flex gap-3">
+        <div className="flex gap-2">
           <button
             onClick={() => navigate(`/edit-user/${id}`)}
             className="px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 rounded-lg transition"
           >
             Edit User
           </button>
-
           <button
             onClick={deleteUser}
             className="px-4 py-2 bg-red-500 text-white hover:bg-red-600 rounded-lg transition"
@@ -59,7 +58,8 @@ const UserDetails = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-6">
+
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
         <div className="userdetailscard1">
           <div className="userdetailscard2">
             <p>Personal Details</p>

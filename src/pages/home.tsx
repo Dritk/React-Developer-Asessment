@@ -80,7 +80,10 @@ const Home = () => {
             setSearch(e.target.value);
           }}
         />
-        <select className="border border-black p-1" onChange={onCheck}>
+        <select
+          className="border  border-gray-400 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onChange={onCheck}
+        >
           <option value="">All</option>
           <option value="male">Male</option>
           <option value="female">Female</option>

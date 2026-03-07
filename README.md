@@ -1,22 +1,31 @@
-# React Frontend Assessment
+# User Management Dashboard
 
 ## Description
-This project is a React + TypeScript application built with Vite.  
-It displays user data from an API and includes features like search, pagination, and user details.
+This project is a User Management Dashboard built using React + TypeScript + Vite.
+It fetches user data from the DummyJSON API and allows listing, searching, filtering, and performing CRUD operations.
 
 ## Features
+
 - Fetch users from API
-- Users Listing page
-- Search users
+- Display the details from the user
 - Pagination
-- User details page
-- Reusable components
+- Search Functionality
+- Filtering
+- Loading state and error handling
+- Dynamic routing
+- CRUD operations
+- Controlled form inputs and validation using Yup
+- API simulation using POST/PUT/DELETE
+  
 
 ## Tech Stack
 - React
 - TypeScript
 - Vite
 - Axios
+- React Router
+- Formik
+- Yup
 - Tailwind CSS
 
 ## Screenshots

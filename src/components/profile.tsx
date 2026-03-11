@@ -16,20 +16,27 @@ const Profile = ({
   onClick,
 }: ProfileProps) => {
   return (
-    <div>
-      <div className="bg-amber-50 border border-black/30 rounded-lg p-5 ">
-        <div className="flex flex-col ">
-          <img src={imgSrc || "/vite.svg"} alt="" className="w-14 h-14" />
-          <p className="font-bold text-lg ">{fullName}</p>
+    <div className="">
+      <div className="bg-white border border-gray-200 rounded-xl p-6 w-64 shadow-sm">
+        <div className="flex items-center gap-3 mb-4 ">
+          <img
+            src={imgSrc || "/vite.svg"}
+            alt=""
+            className="w-12 h-12 rounded-full object-cover"
+          />
+          <div>
+            <p className="font-semibold text-gray-900 text-sm ">{fullName}</p>
+            <p className="text-xs text-gray-500">{companyName}</p>
+          </div>
         </div>
-        <p>E-mail:{email}</p>
-        <p>
-          <span className="">Phone:</span>
-          {phone}
-        </p>
-        <p>{companyName}</p>
+        <div className="h-px bg-gray-300 mb-4" />
+        <div className="space-y-1.5 mb-5 text-sm text-gray-700">
+          <p>{email}</p>
+          <p>{phone}</p>
+        </div>
+
         <button
-          className="bg-blue-500 text-white rounded-lg p-2 mt-2"
+          className="w-full bg-blue-500 text-white text-sm font-medium hover:bg-blue-700 transition-colors rounded-lg p-2 mt-2"
           onClick={onClick}
         >
           View Profile

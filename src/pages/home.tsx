@@ -69,56 +69,68 @@ const Home = () => {
     setSkip(0);
   };
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-3xl font-bold mt-6">User Listing</h1>
-      <p className="text-gray-500 mb-6">Search and filter users</p>
-      <div className="flex flex-row items-center gap-x-2">
-        <SearchBar
-          onChange={(e) => {
-            setSkip(0);
+    <div className="min-h-screen bg-gray-50 py-8 px-6 flex flex-col items-center">
+      <div className="w-full max-w-6xl">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">User Listing</h1>
+            <p className="text-gray-500 mt-1">Search and filter users</p>
+          </div>
 
-            setSearch(e.target.value);
-          }}
-        />
-        <select
-          className="border  border-gray-400 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          onChange={onCheck}
-        >
-          <option value="">All</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
+          <div className="flex items-center gap-3">
+            <SearchBar
+              onChange={(e) => {
+                setSkip(0);
+                setSearch(e.target.value);
+              }}
+            />
 
-      {loading && (
-        <div>
-          <Loader />
+            <select
+              className="border border-gray-300 p-2 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={onCheck}
+            >
+              <option value="">All</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
         </div>
-      )}
-      {error && <div>Error</div>}
-      {!loading && !error && (
-        <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-          {users.map((users) => {
-            return (
-              <div key={users?.id}>
-                <Profile
-                  imgSrc={users?.image}
-                  fullName={users?.firstName + " " + users?.lastName}
-                  email={users?.email}
-                  phone={users?.phone}
-                  companyName={users.company.name}
-                  onClick={() => navigate(`/${users.id}`)}
-                />
-              </div>
-            );
-          })}
+
+        {loading && (
+          <div className="flex justify-center py-20">
+            <Loader />
+          </div>
+        )}
+
+        {error && (
+          <div className="text-center text-red-500 py-10">
+            Something went wrong
+          </div>
+        )}
+
+        {!loading && !error && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {users.map((users) => {
+              return (
+                <div key={users?.id}>
+                  <Profile
+                    imgSrc={users?.image}
+                    fullName={users?.firstName + " " + users?.lastName}
+                    email={users?.email}
+                    phone={users?.phone}
+                    companyName={users.company.name}
+                    onClick={() => navigate(`/${users.id}`)}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        <div className="flex justify-center items-center gap-4 mt-10">
+          <Button label="Prev" onClick={onPrevious} disabled={skip == 0} />
+          <Button label="Next" onClick={onNext} />
         </div>
-      )}
-
-      <div className="flex items-center gap-2">
-        <Button label="Prev" onClick={onPrevious} disabled={skip == 0} />
-
-        <Button label="Next" onClick={onNext} />
       </div>
     </div>
   );

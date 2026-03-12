@@ -1,3 +1,5 @@
+import { MdOutlineMail, MdOutlinePhone } from "react-icons/md";
+
 interface ProfileProps {
   fullName: string;
   imgSrc?: string;
@@ -16,13 +18,14 @@ const Profile = ({
   onClick,
 }: ProfileProps) => {
   return (
-    <div className="">
-      <div className="bg-white border border-gray-200 rounded-xl p-6 w-64 shadow-sm">
+    <div className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200  w-full">
+      <div className="h-0.5 bg-gray-200 group-hover:bg-blue-700 transition-colors duration-300" />
+      <div className="p-5">
         <div className="flex items-center gap-3 mb-4 ">
           <img
             src={imgSrc || "/vite.svg"}
             alt=""
-            className="w-12 h-12 rounded-full object-cover"
+            className="w-12 h-12 rounded-full object-cover border-2 border-gray-300"
           />
           <div>
             <p className="font-semibold text-gray-900 text-sm ">{fullName}</p>
@@ -31,8 +34,14 @@ const Profile = ({
         </div>
         <div className="h-px bg-gray-300 mb-4" />
         <div className="space-y-1.5 mb-5 text-sm text-gray-700">
-          <p>{email}</p>
-          <p>{phone}</p>
+          <p className="flex items-center gap-1">
+            <MdOutlineMail className="shrink-0" />
+            {email}
+          </p>
+          <p className="flex items-center gap-1">
+            <MdOutlinePhone />
+            {phone}
+          </p>
         </div>
 
         <button
